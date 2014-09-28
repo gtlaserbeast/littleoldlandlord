@@ -11,6 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140928234644) do
+
+  create_table "rentals", force: true do |t|
+    t.string   "address"
+    t.string   "description"
+    t.float    "latitude",     limit: 24
+    t.float    "longitude",    limit: 24
+    t.string   "availability"
+    t.string   "pay_state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

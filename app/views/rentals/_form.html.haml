@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-md-6
+      .form-group
+        = form_for @rental do |f|
+          = f.label :address, class: 'control-label'
+          = f.text_field :address, class: 'form-control'
+          %br
+          = f.label :description, class: 'control-label'
+          = f.text_field :description, class: 'form-control'
+          %br
+          = f.submit
