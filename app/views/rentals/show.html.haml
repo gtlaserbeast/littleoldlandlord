@@ -1,2 +1,20 @@
-%h1 Rentals#show
-%p Find me in app/views/rentals/show.html.haml
+.col-md-12
+  %strong
+    =@location.name
+  |
+  =@location.address
+.col-md-12
+  %em
+    Courses Taught Here: 
+  %br
+  - @location.cohorts.each do |cohort|
+    - if current_user.try(:admin?)
+      = link_to "Edit", edit_cohort_path(@location, cohort), :class=> "btn btn-info btn-xs"
+      = link_to "Delete", cohort_path(cohort), method: :delete, :class=>"btn btn-danger btn-xs"
+    %strong
+      = link_to cohort.course.title, cohort_path(@location, cohort)
+    %em
+      = cohort.course.description
+      = cohort.start_date
+    = link_to cohort.location.name, location_path(cohort.location)
+    %br

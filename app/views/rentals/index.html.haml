@@ -1,2 +1,17 @@
-%h1 Rentals#index
-%p Find me in app/views/rentals/index.html.haml
+.container
+  - @rentals.each do |rental|
+    - markers = "#{rental.latitude}%2C#{rental.longitude}&"
+    .row
+      .col-md-6
+        - if current_user.try(:admin?)
+          = link_to "Edit", edit_rental_path(rental), :class=> "btn btn-info btn-xs"
+          = link_to "Delete", rental_path(rental), method: :delete, :class=>"btn btn-danger btn-xs"
+        %strong
+          = link_to rental.address, rental_path(rental)
+      .col-md-6
+        = image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&markers=#{markers}"
+  .row
+    .col-md-6
+      - if current_user.try(:admin?)
+        = link_to "New Rental", new_rental_path, :class=>"btn btn-default btn-xs"
+      = link_to "Back", root_path, :class=>"btn btn-default btn-xs"
