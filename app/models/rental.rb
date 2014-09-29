@@ -9,7 +9,7 @@ class Rental < ActiveRecord::Base
 
     def init
       self.availability = 'Available'
-      self.pay_state = 'due'
+      self.pay_state = 'Due'
     end
 
 end
