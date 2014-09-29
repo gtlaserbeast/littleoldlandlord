@@ -5,4 +5,11 @@ class Rental < ActiveRecord::Base
   validates :description, presence: true
   geocoded_by :address
   after_validation :geocode
+  after_initialize :init
+
+    def init
+      self.availability = 'Available'
+      self.pay_state = 'due'
+    end
+
 end
