@@ -75,4 +75,18 @@
 
 #**45 x 2(newbie coefficient)= 90ish total hours**
 #I would love some suggestions for nifty names
+
+####9/29/2014 Self Stand-Up
+1. Things I did yesterday:
+	- Created rentals / repairs
+	- Implemented devise for users
+	- included bootstrap
+	-
+2. Things to do today:
+	- add admin to devise
+	- add other attributes to devise user by including ctrlr
+	- decide on a bootstrap template (stanley is looking promising)
+	-consider other styling options (foundation, etc.)
+3. Roadblocks:
+	- Heartburn like a mofo
 	
