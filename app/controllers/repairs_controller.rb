@@ -1,5 +1,6 @@
 class RepairsController < ApplicationController
   before_action :find_repair, only: [:show, :edit, :update, :destroy]
+  before_action :find_rental, only: [:new, :create]
   def index
     @repairs = Repair.all
   end
@@ -11,7 +12,7 @@ class RepairsController < ApplicationController
   def create
     @repair = Repair.create repair_params
     if @repair.save == true
-      redirect_to repairs_path
+      redirect_to rental_path(@rental)
     else
       render :new
     end
@@ -25,16 +26,20 @@ class RepairsController < ApplicationController
 
   def update
     @repair.update_attributes repair_params
-    redirect_to repairs_path
+    redirect_to rental_path(@rental)
   end
 
   def destroy
     @repair.delete
-    redirect_to repairs_path
+    redirect_to rental_path(@rental)
   end
 private
+  def find_rental
+      @rental = Rental.find params[:rental_id]
+  end
+
   def repair_params
-    params.require(:repair).permit(:description, :address)
+    params.require(:repair).permit(:description, :category, :state, :rental_id)
   end
   def find_repair
     @repair = Repair.find params[:id]

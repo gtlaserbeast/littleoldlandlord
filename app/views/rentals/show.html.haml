@@ -13,10 +13,11 @@
   - @rental.repairs.each do |repair|
     - if current_user.try(:admin?)
       = link_to "Edit", edit_rental_repair_path(@rental, repair), :class=> "btn btn-info btn-xs"
-      = link_to "Delete", rental_repair_path(repair), method: :delete, :class=>"btn btn-danger btn-xs"
+      = link_to "Delete", rental_repair_path(@rental, repair), method: :delete, :class=>"btn btn-danger btn-xs"
     %em
       = repair.category
       = repair.description
       = repair.state
-
+    %br
+= link_to "Repair Request", new_rental_repair_path(@rental.id), :class=>"btn btn-default btn-xs"
 = link_to "Back", rentals_path, :class=>"btn btn-default btn-xs"

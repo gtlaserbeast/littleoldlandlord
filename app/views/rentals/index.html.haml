@@ -1,5 +1,7 @@
 .container
   - @rentals.each do |rental|
+    %br
+    %br
     - markers = "#{rental.latitude}%2C#{rental.longitude}&"
     .row
       .col-md-6
