@@ -21,7 +21,7 @@
   %li{:class => "#{'active' if current_page?(root_path)}"}=link_to "Home", root_path
   - if current_user
     %li{:class => "#{'active' if current_page?(edit_user_registration_path)}"}
-      = link_to "#{current_user.name}", edit_user_registration_path
+      = link_to "#{current_user.email}", edit_user_registration_path
     %li
       = link_to "Logout", destroy_user_session_path, method: :delete
   - else

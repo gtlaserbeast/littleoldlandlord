@@ -1,20 +1,22 @@
-.col-md-12
+- markers = "#{@rental.latitude}%2C#{@rental.longitude}&"
+.col-md-6
   %strong
-    =@location.name
+  =@rental.address
   |
-  =@location.address
+  =@rental.description
+.col-md-6
+  = image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&markers=#{markers}"
 .col-md-12
   %em
-    Courses Taught Here: 
+    Repairs @ this property: 
   %br
-  - @location.cohorts.each do |cohort|
+  - @rental.repairs.each do |repair|
     - if current_user.try(:admin?)
-      = link_to "Edit", edit_cohort_path(@location, cohort), :class=> "btn btn-info btn-xs"
-      = link_to "Delete", cohort_path(cohort), method: :delete, :class=>"btn btn-danger btn-xs"
-    %strong
-      = link_to cohort.course.title, cohort_path(@location, cohort)
+      = link_to "Edit", edit_rental_repair_path(@rental, repair), :class=> "btn btn-info btn-xs"
+      = link_to "Delete", rental_repair_path(repair), method: :delete, :class=>"btn btn-danger btn-xs"
     %em
-      = cohort.course.description
-      = cohort.start_date
-    = link_to cohort.location.name, location_path(cohort.location)
-    %br
+      = repair.category
+      = repair.description
+      = repair.state
+
+= link_to "Back", rentals_path, :class=>"btn btn-default btn-xs"

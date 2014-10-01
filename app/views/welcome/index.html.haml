@@ -1,1 +1,2 @@
-=link_to "new rental", new_rental_path
+- if current_user.try(:admin?)
+  =link_to "new rental", new_rental_path
