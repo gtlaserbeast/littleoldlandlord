@@ -89,4 +89,8 @@
 	-consider other styling options (foundation, etc.)
 3. Roadblocks:
 	- Heartburn like a mofo
-	
+####9/30/2014 Self Stand-Up
+1. Things I did yesterday: modified devise, added repairs
+2. Things to do tomorrow: make improved forms, work on UX
+3. Roadblocks:
+	- buffer css for application.html.haml
