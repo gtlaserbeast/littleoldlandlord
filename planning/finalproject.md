@@ -94,3 +94,19 @@
 2. Things to do tomorrow: make improved forms, work on UX
 3. Roadblocks:
 	- buffer css for application.html.haml
+####10/1/2014
+1. Things I did yesterday: modified views
+2. Things to do tomorrow: flesh out functionality
+3. Roadblocks:
+	- need better ideas. why do my ideas suck?
+####10/2/2014
+1. Things I did yesterday: struggled with organizational concepts regarding relationship between user/rental
+2. Things to do tomorrow: Implement comments, make users have a relationship with 1(standarduser) or many(admin) rentals
+3. Roadblocks:
+	- previous mental pictures of goals were flawed
+####10/3/2014
+1. Things I did yesterday: tom wilson talk, installed ubuntu on the chromebook, looked at nodeschool
+2. Things to do tomorrow: decide upon template styling
+3. Roadblocks:
+	- too many options
+	

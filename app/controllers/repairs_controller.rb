@@ -1,6 +1,6 @@
 class RepairsController < ApplicationController
   before_action :find_repair, only: [:show, :edit, :update, :destroy]
-  before_action :find_rental, only: [:new, :create]
+  before_action :find_rental, only: [:new, :create, :edit, :update, :destroy]
   def index
     @repairs = Repair.all
   end

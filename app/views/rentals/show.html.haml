@@ -16,7 +16,10 @@
       = link_to "Delete", rental_repair_path(@rental, repair), method: :delete, :class=>"btn btn-danger btn-xs"
     %em
       = repair.category
-      = repair.description
+    |
+    = repair.description
+    |
+    %strong
       = repair.state
     %br
 = link_to "Repair Request", new_rental_repair_path(@rental.id), :class=>"btn btn-default btn-xs"

@@ -15,9 +15,10 @@
  *= require_self
  */
 
-
 body {
   padding-top: 70px;
+  /*background-image: url('wheres-the-rent.gif');*/
+  color: lime;
 }
 .starter-template {
   padding: 40px 15px;
