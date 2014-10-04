@@ -1,5 +1,6 @@
 .container
   - markers = "#{@rental.latitude}%2C#{@rental.longitude}&"
+  - landlord_email = User.find(@rental.landlord_id).email
   .row
     .col-lg-8.col-lg-offset-2.centered
       %strong
@@ -9,7 +10,7 @@
       %br
       =@rental.rent_price
       |
-      =mail_to @rental.landlord_id
+      =mail_to landlord_email
       %br
       = image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&markers=#{markers}"
   .row
