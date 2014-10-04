@@ -112,4 +112,4 @@
 #####10/4/2014
 1. Things done today: tweaked styling, added landlord_id to rentals
 2. fix address block in footer, workflow for rent/repairs, comments, mailer/texter
-3. Roadblocks: user where user.id == landlord_id 
+3. Roadblocks: IF NOT ADMIN THEN CHOOSE RENTAL upon registration
