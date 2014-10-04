@@ -1,4 +1,4 @@
-.container
+#ww.container
   - @rentals.each do |rental|
     %br
     %br
@@ -16,4 +16,4 @@
     .col-md-6
       - if current_user.try(:admin?)
         = link_to "New Rental", new_rental_path, :class=>"btn btn-default btn-xs"
-      = link_to "Back", root_path, :class=>"btn btn-default btn-xs"
+      = link_to "Back", root_path

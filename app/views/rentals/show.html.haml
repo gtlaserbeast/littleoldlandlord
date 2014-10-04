@@ -1,26 +1,30 @@
-- markers = "#{@rental.latitude}%2C#{@rental.longitude}&"
-.col-md-6
-  %strong
-  =@rental.address
-  |
-  =@rental.description
-.col-md-6
-  = image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&markers=#{markers}"
-.col-md-12
-  %em
-    Repairs @ this property: 
+#ww
+  - markers = "#{@rental.latitude}%2C#{@rental.longitude}&"
+  .row
+    .col-lg-8.col-lg-offset-2.centered
+      %strong
+      =@rental.address.upcase
+      |
+      =@rental.description
+      %br
+      = image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&markers=#{markers}"
+  .row
+    .col-lg-8.col-lg-offset-2.centered
+      %em
+        Repairs @ this property: 
+      %br
+      - @rental.repairs.each do |repair|
+        - if current_user.try(:admin?)
+          = link_to "Edit", edit_rental_repair_path(@rental, repair), :class=> "btn btn-info btn-xs"
+          = link_to "Delete", rental_repair_path(@rental, repair), method: :delete, :class=>"btn btn-danger btn-xs"
+        %em
+          = repair.category
+        |
+        = repair.description
+        |
+        %strong
+          = repair.state
+        %br
+  = link_to "Request a Repair", new_rental_repair_path(@rental.id), :class=>"btn btn-success btn-xs"
   %br
-  - @rental.repairs.each do |repair|
-    - if current_user.try(:admin?)
-      = link_to "Edit", edit_rental_repair_path(@rental, repair), :class=> "btn btn-info btn-xs"
-      = link_to "Delete", rental_repair_path(@rental, repair), method: :delete, :class=>"btn btn-danger btn-xs"
-    %em
-      = repair.category
-    |
-    = repair.description
-    |
-    %strong
-      = repair.state
-    %br
-= link_to "Repair Request", new_rental_repair_path(@rental.id), :class=>"btn btn-default btn-xs"
-= link_to "Back", rentals_path, :class=>"btn btn-default btn-xs"
+  = link_to "Back", rentals_path
