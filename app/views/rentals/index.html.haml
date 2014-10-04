@@ -1,19 +1,19 @@
-#ww.container
+.container
   - @rentals.each do |rental|
-    %br
     %br
     - markers = "#{rental.latitude}%2C#{rental.longitude}&"
     .row
-      .col-md-6
+      .col-md-4.centered
+        %strong
+          = link_to rental.address.upcase, rental_path(rental), :class => "btn"
+      .col-md-4.centered
         - if current_user.try(:admin?)
           = link_to "Edit", edit_rental_path(rental), :class=> "btn btn-info btn-xs"
           = link_to "Delete", rental_path(rental), method: :delete, :class=>"btn btn-danger btn-xs"
-        %strong
-          = link_to rental.address, rental_path(rental)
-      .col-md-6
+      .col-md-4.centered
         = image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&markers=#{markers}"
   .row
-    .col-md-6
+    .col-md-8.col-md-8-offset-2.centered
       - if current_user.try(:admin?)
         = link_to "New Rental", new_rental_path, :class=>"btn btn-default btn-xs"
-      = link_to "Back", root_path
+      = link_to "Back", root_path, :class => "btn btn-xs"

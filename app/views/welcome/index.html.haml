@@ -1,13 +1,12 @@
-- if current_user.try(:admin?)
-  =link_to "new rental", new_rental_path
 #ww
-  .container
-    .row
-      .col-lg-8.col-lg-offset-2.centered
-        = image_tag("user.png", alt: "Little Old Landlady!")
-        %h1 Hi, I am Stanley!
-        %p Hello everybody. I'm Stanley, a free handsome bootstrap theme coded by BlackTie.co. A really simple theme for those wanting to showcase their work with a cute & clean style.
-        %p
-          Please, consider to register to
-          %a{:href => "http://eepurl.com/IcgkX"} our newsletter 
-          to be updated with our latest themes and freebies. Like always, you can use this theme in any project freely. Share it with your friends.
+  .row
+    .col-lg-8.col-lg-offset-2.centered
+      = image_tag("old-woman.jpg", height: 200, alt: "Little Old Landlady!")
+      %h1 Welcome to Little Old Landlady, LOL!
+      %p Little Old Landlady is a tool for low impact interaction between property owners and tenants. Owners can easily track repairs, keep up with rent payments, and monitor tenant concerns for each of their properties. Tenants are provided with an easy means for voicing their concerns, paying their bills, and alerting management to needed repairs. 
+    .col-lg-8.col-lg-offset-2.centered
+      %p
+        Make Renting Easier!
+      %p
+        - unless current_user
+          = link_to "Sign Up Now", new_user_registration_path, class: "btn btn-lg"
