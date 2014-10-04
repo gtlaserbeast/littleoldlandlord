@@ -7,36 +7,91 @@
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %meta{:content => "", :name => "description"}
-    %meta{:content => "", :name => "author"}
+    %meta{:content => "Will Fisher", :name => "author"}
     / %link{:href => "../../assets/ico/favicon.ico", :rel => "shortcut icon"}
     %title Little Old Landlady
     / Bootstrap core CSS
-    = stylesheet_link_tag 'application', media: 'all'#, 'data-turbolinks-track' => true
-    = javascript_include_tag 'application'#, 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
-
-    / Just for debugging purposes. Don't actually copy this line!
-    /[if lt IE 9] <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
-    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
-    /[if lt IE 9]
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   %body{:role => "document"}
     / Fixed navbar
-    .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+    .navbar.navbar-inverse.navbar-static-top
       .container
         .navbar-header
           %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
           = link_to "Little Old LandLady", root_path, class: "navbar-brand #{'active' if current_page?(root_path)}"
         .navbar-collapse.collapse
-          = render 'layouts/navbar'
-        / /.nav-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              =link_to "Rental Properties", rentals_path
+            - if current_user
+              %li
+                = link_to "#{current_user.email}", edit_user_registration_path
+              %li
+                = link_to "Logout", destroy_user_session_path, method: :delete
+            - else
+              %li
+                = link_to "Register", new_user_registration_path
+              %li
+                = link_to "Login", new_user_session_path
+            / %li
+            /   %a{:href => "about.html"} About
+            / %li
+            /   %a{:href => "blog.html"} Blog
+            / %li
+            /   %a{:href => "contact.html"} Contact
+    / .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+    /   .container
+    /     .navbar-header
+    /       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+    /         %span.sr-only Toggle navigation
+    /         %span.icon-bar
+    /         %span.icon-bar
+    /         %span.icon-bar
+    /       = link_to "Little Old LandLady", root_path, class: "navbar-brand #{'active' if current_page?(root_path)}"
+    /     .navbar-collapse.collapse
+    /       = render 'layouts/navbar'
+    /     / /.nav-collapse
     .container.theme-showcase{:role => "main"}
       - if notice || alert
         %p.notice= notice
         %p.alert= alert
       = yield
+#footer
+  .container
+    .row
+      - if current_user.try(:admin?)
+        .col-lg-4
+          %h4 Technical Assistance
+          %p
+            Will Fisher
+            %br/
+            = mail_to "willcfisherjr@gmail.com", "willcfisherjr@gmail.com"
+      - elsif
+        .col-lg-4
+          %h4 My Landlord
+          %p
+            57 Her Address St.,
+            %br
+            Beaufort, SC 29902
+            %br
+            (843)555-5555
+      .col-lg-4
+        %h4 Useful Links
+        %p
+          %a{:href => "#"} Dribbble
+          %br/
+          %a{:href => "#"} Twitter
+          %br/
+          %a{:href => "#"} Facebook
+      .col-lg-4
+        %h4 About LittleOldLandlady
+        %p An application designed to streamline the process of managing rental properties.
+    / .row
+    /   .col-lg-4.col-lg-offset-4
+    /     %h6(style='color: white;')
+    /       Created by Will C. Fisher, Jr.
