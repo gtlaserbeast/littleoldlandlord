@@ -3,9 +3,13 @@
   .row
     .col-lg-8.col-lg-offset-2.centered
       %strong
-      =@rental.address.upcase
+        =@rental.address.upcase
       |
       =@rental.description
+      %br
+      =@rental.rent_price
+      |
+      =mail_to @rental.landlord_id
       %br
       = image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&markers=#{markers}"
   .row
