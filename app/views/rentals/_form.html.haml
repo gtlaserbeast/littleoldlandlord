@@ -1,4 +1,4 @@
-.container
+- if current_user.admin?
   .row
     .col-md-6
       .form-group
@@ -9,4 +9,8 @@
           = f.label :description, class: 'control-label'
           = f.text_field :description, class: 'form-control'
           %br
-          = f.submit
+          = f.label :rent_price, class: 'control-label'
+          = f.text_field :rent_price, class: 'form-control'
+          = f.hidden_field :landlord_id, :value => current_user.id
+
+          = f.submit 'Submit', class: 'btn'

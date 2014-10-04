@@ -34,7 +34,7 @@ class RentalsController < ApplicationController
   end
 private
   def rental_params
-    params.require(:rental).permit(:description, :address)
+    params.require(:rental).permit(:description, :address, :landlord_id, :rent_price)
   end
   def find_rental
     @rental = Rental.find params[:id]

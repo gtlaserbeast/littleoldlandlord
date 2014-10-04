@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001042756) do
+ActiveRecord::Schema.define(version: 20141004224305) do
 
   create_table "rentals", force: true do |t|
     t.string   "address"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20141001042756) do
     t.string   "pay_state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "landlord_id"
+    t.float    "rent_price",   limit: 24
   end
 
   create_table "repairs", force: true do |t|

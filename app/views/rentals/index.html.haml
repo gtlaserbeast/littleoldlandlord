@@ -1,4 +1,8 @@
 .container
+  - if current_user.try(:admin?)
+    .row
+      .col-md-4
+        = link_to "New Rental", new_rental_path, :class=>"btn"
   - @rentals.each do |rental|
     %br
     - markers = "#{rental.latitude}%2C#{rental.longitude}&"
@@ -14,6 +18,4 @@
         = image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&markers=#{markers}"
   .row
     .col-md-8.col-md-8-offset-2.centered
-      - if current_user.try(:admin?)
-        = link_to "New Rental", new_rental_path, :class=>"btn btn-default btn-xs"
       = link_to "Back", root_path, :class => "btn btn-xs"

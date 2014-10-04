@@ -56,9 +56,9 @@
     /       = render 'layouts/navbar'
     /     / /.nav-collapse
     .container.theme-showcase{:role => "main"}
-      - if notice || alert
-        %p.notice= notice
-        %p.alert= alert
+    - if notice || alert
+      %p.notice= notice
+      %p.alert= alert
     = yield
 #footer
   .container
