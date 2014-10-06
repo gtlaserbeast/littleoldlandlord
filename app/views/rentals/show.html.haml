@@ -3,16 +3,17 @@
   - landlord_email = User.find(@rental.landlord_id).email
   .row
     .col-lg-8.col-lg-offset-2.centered
-      %strong
-        =@rental.address.upcase
-      |
-      =@rental.description
-      %br
-      =@rental.rent_price
-      |
-      =mail_to landlord_email
-      %br
-      = image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&markers=#{markers}"
+      .col-lg-4.centered
+        %strong
+          =@rental.address.upcase
+        %p
+          =@rental.description
+        %br
+        = "$#{'%.2f' % @rental.rent_price}"
+        %br
+        =mail_to landlord_email
+      .col-lg-4.centered
+        = image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&markers=#{markers}"
   .row
     .col-lg-8.col-lg-offset-2.centered
       %em
@@ -30,6 +31,6 @@
         %strong
           = repair.state
         %br
-  = link_to "Request a Repair", new_rental_repair_path(@rental.id), :class=>"btn btn-success btn-xs"
-  %br
-  = link_to "Back", rentals_path
+  .row
+    .col-lg-8.col-lg-offset-2.centered
+      = link_to "Request a Repair", new_rental_repair_path(@rental.id), :class=>"btn btn-success btn-xs"
