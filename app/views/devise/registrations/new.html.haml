@@ -3,7 +3,7 @@
     .col-lg-6.col-lg-offset-3.centered
       %h3 SIGN UP
       %hr
-        %p Landlords should be able to designate themselves as such
+        %p Check the admin box if you're a Landlord. Otherwise, please select your new home.
   .row.mt
     .col-lg-8.col-lg-offset-2
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
@@ -20,7 +20,7 @@
           = f.label :admin, 'Are You a Property Owner?', class: 'control-label'
           = f.check_box :admin, class: 'form-control', id: 'checkbox'
         .form-group#rental_select{:style => "display:none"}
-          = f.label :rental_id, class: 'control-label'
+          = f.label :rental_id, 'Please Select Your New Home', class: 'control-label'
           %br
           = f.collection_select :rental_id, Rental.all.each,:id,:address, include_blank: true, class: 'form-control'
         .form-group

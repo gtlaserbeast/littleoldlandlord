@@ -17,6 +17,13 @@
           %br/
           = f.text_field :phone, class: 'form-control'
         .form-group
+          = f.label :admin, 'Are You a Property Owner?', class: 'control-label'
+          = f.check_box :admin, class: 'form-control', id: 'checkbox'
+        .form-group#rental_select{:style => "display:none"}
+          = f.label :rental_id, 'Please Select Your New Home', class: 'control-label'
+          %br
+          = f.collection_select :rental_id, Rental.all.each,:id,:address, include_blank: true, class: 'form-control'
+        .form-group
           = f.label :mailing_address, class: 'control-label'
           %br/
           = f.text_field :mailing_address, class: 'form-control'
