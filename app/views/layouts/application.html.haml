@@ -63,7 +63,7 @@
 #footer
   .container
     .row
-      - if current_user.try(:admin?)
+      - if current_user.nil? || current_user.try(:admin?)
         .col-lg-4
           %h4 Technical Assistance
           %p
@@ -71,14 +71,15 @@
             %br/
             = mail_to "willcfisherjr@gmail.com", "willcfisherjr@gmail.com"
       - elsif
+        - home = Rental.find(current_user.rental_id)
+        - landlord_name = User.find(home.landlord_id).name
+        - landlord_address = User.find(home.landlord_id).mailing_address
         .col-lg-4
-          %h4 My Landlord
+          %h4 My Landlord:
           %p
-            57 Her Address St.,
+            = landlord_name
             %br
-            Beaufort, SC 29902
-            %br
-            (843)555-5555
+            = landlord_address
       .col-lg-4
         %h4 Useful Links
         %p
