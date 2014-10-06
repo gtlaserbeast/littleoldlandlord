@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
+  match '/repairs', :action => 'repairs_index', :via => [:get], :controller => 'repairs'
   resources :rentals do
     resources :repairs
   end
