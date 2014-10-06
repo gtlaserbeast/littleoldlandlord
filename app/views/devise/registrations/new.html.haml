@@ -16,7 +16,7 @@
           %br/
           = f.text_field :phone, class: 'form-control'
         .form-group
-          = f.label :admin, 'Are You a Property Owner?', class: 'control-label'
+          = f.label :admin, 'Check This Box If You Are A Landlord!', class: 'control-label'
           = f.check_box :admin, class: 'form-control', id: 'checkbox'
         .form-group#rental_select{:style => "display:none"}
           = f.label :rental_id, 'Please Select Your New Home', class: 'control-label'
