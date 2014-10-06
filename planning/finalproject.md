@@ -117,3 +117,7 @@
 1. Things done today: forced users to be a landlord or pick a home via js+checkbox, modified header and footer, reorganized rental show, sketched repair workflow
 2. things to do further on tonight->tomorrow: implement workflow state for repairs, implement mailer/texter
 3. realizing limitations of only using an admin attribute for devise user. Would like to update rental with current_tenant upon creation of user. 
+####10/6/2014: BEFORE BED UPDATE
+1. deployed to heroku!
+2. still need to implement workflow, mailer/texter, current_tenant
+3. heroku deploy was a biatch, ssh pubkey issues abound due to pointing in the wrong direction, css wasn't deploying-> had to precompile
