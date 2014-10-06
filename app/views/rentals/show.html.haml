@@ -16,7 +16,8 @@
         %br
         = link_to "Make a Rent Payment", :class=>"btn btn-xs"
       .col-lg-4.centered
-        %iframe{:frameborder => "0", :height => "300", :src => "https://www.google.com/maps/embed/v1/place?q=#{markers}&key=AIzaSyAQnuVfqaXy-1fiSaAYXDi2Wh39lanrHv4", :style => "border:0", :width => "600"}
+        .google-maps
+          %iframe{:frameborder => "0", :height => "450", :src => "https://www.google.com/maps/embed/v1/place?q=#{markers}&key=AIzaSyAQnuVfqaXy-1fiSaAYXDi2Wh39lanrHv4", :style => "border:0", :width => "600"}
   .row
     .col-lg-8.col-lg-offset-2.centered
       %em
