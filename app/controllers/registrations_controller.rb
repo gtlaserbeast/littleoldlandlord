@@ -2,10 +2,10 @@ class RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @new_user = build_resource(sign_up_params)
-    my_string = @new_user.email
-    if my_string.include? "@landlord.com"
-      @new_user.admin = 1
-    end
+    # my_string = @new_user.email
+    # if my_string.include? "@landlord.com"
+    #   @new_user.admin = 1
+    # end
 
     resource_saved = resource.save
     yield resource if block_given?
@@ -32,10 +32,10 @@ class RegistrationsController < Devise::RegistrationsController
   private
  
   def sign_up_params
-    params.require(:user).permit(:name, :phone, :mailing_address,:email, :password, :password_confirmation)
+    params.require(:user).permit(:admin, :name, :phone, :mailing_address, :rental_id, :email, :password, :password_confirmation)
   end
  
   def account_update_params
-    params.require(:user).permit(:name, :phone, :mailing_address, :email, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:admin, :name, :rental_id, :phone, :mailing_address, :email, :password, :password_confirmation, :current_password)
   end
 end
