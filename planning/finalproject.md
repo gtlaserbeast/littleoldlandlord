@@ -113,3 +113,7 @@
 1. Things done today: tweaked styling, added landlord_id to rentals
 2. fix address block in footer, workflow for rent/repairs, comments, mailer/texter
 3. Roadblocks: IF NOT ADMIN THEN CHOOSE RENTAL upon registration	
+####10/5/2014
+1. Things done today: forced users to be a landlord or pick a home via js+checkbox, modified header and footer, reorganized rental show, sketched repair workflow
+2. things to do further on tonight->tomorrow: implement workflow state for repairs, implement mailer/texter
+3. realizing limitations of only using an admin attribute for devise user. 
