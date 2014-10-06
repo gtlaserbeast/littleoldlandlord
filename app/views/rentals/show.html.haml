@@ -16,7 +16,7 @@
         %br
         = link_to "Make a Rent Payment", :class=>"btn btn-xs"
       .col-lg-4.centered
-        = image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&markers=#{markers}"
+        %iframe{:frameborder => "0", :height => "300", :src => "https://www.google.com/maps/embed/v1/place?q=#{markers}&key=AIzaSyAQnuVfqaXy-1fiSaAYXDi2Wh39lanrHv4", :style => "border:0", :width => "600"}
   .row
     .col-lg-8.col-lg-offset-2.centered
       %em
