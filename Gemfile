@@ -16,5 +16,9 @@ gem 'devise'
 gem 'nested_form'
 gem 'workflow'
 gem "geocoder"
+group :production, :staging do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
