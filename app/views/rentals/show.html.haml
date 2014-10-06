@@ -1,6 +1,7 @@
 .container
   - markers = "#{@rental.latitude}%2C#{@rental.longitude}&"
   - landlord_email = User.find(@rental.landlord_id).email
+  - landlord_name = User.find(@rental.landlord_id).name
   .row
     .col-lg-8.col-lg-offset-2.centered
       .col-lg-4.centered
@@ -8,10 +9,12 @@
           =@rental.address.upcase
         %p
           =@rental.description
-        %br
         = "$#{'%.2f' % @rental.rent_price}"
         %br
-        =mail_to landlord_email
+        =mail_to landlord_email, "#{landlord_name}", :class=>"btn btn-xs"
+        = link_to "Request a Repair", new_rental_repair_path(@rental.id), :class=>"btn btn-xs"
+        %br
+        = link_to "Make a Rent Payment", :class=>"btn btn-xs"
       .col-lg-4.centered
         = image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&markers=#{markers}"
   .row
@@ -31,6 +34,3 @@
         %strong
           = repair.state
         %br
-  .row
-    .col-lg-8.col-lg-offset-2.centered
-      = link_to "Request a Repair", new_rental_repair_path(@rental.id), :class=>"btn btn-success btn-xs"

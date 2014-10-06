@@ -116,4 +116,4 @@
 ####10/5/2014
 1. Things done today: forced users to be a landlord or pick a home via js+checkbox, modified header and footer, reorganized rental show, sketched repair workflow
 2. things to do further on tonight->tomorrow: implement workflow state for repairs, implement mailer/texter
-3. realizing limitations of only using an admin attribute for devise user. 
+3. realizing limitations of only using an admin attribute for devise user. Would like to update rental with current_tenant upon creation of user. 

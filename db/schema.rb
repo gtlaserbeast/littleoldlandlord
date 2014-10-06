@@ -13,17 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20141006003519) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "rentals", force: true do |t|
     t.string   "address"
     t.string   "description"
-    t.float    "latitude",     limit: 24
-    t.float    "longitude",    limit: 24
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "availability"
     t.string   "pay_state"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "landlord_id"
-    t.float    "rent_price",   limit: 24
+    t.float    "rent_price"
   end
 
   create_table "repairs", force: true do |t|
