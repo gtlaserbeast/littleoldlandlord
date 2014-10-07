@@ -25,13 +25,22 @@
           = link_to "Little Old LandLady", root_path, class: "navbar-brand #{'active' if current_page?(root_path)}"
         .navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
-            - if current_user.nil? || current_user.try(:admin?)
+            - if current_user.nil?
               %li
                 =link_to "Rental Properties", rentals_path
-            - else
+            - unless current_user.admin?
               %li
                 = link_to "My Home", rental_path(current_user.rental_id)
             - if current_user.try(:admin?)
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                  Rentals
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to "All Rentals", rentals_path
+                  %li
+                    = link_to "New Rental", new_rental_path
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                   Repairs
@@ -39,12 +48,6 @@
                 %ul.dropdown-menu
                   %li
                     = link_to "All Repairs", repairs_path
-                  %li.divider
-                  %li.dropdown-header Nav header
-                  %li
-                    = link_to "Contact All of My Tenants"
-                  %li
-                    %a{:href => "#"} One more separated link                
             - if current_user
               %li
                 = link_to "#{current_user.email}", edit_user_registration_path
@@ -61,7 +64,6 @@
             /   %a{:href => "blog.html"} Blog
             / %li
             /   %a{:href => "contact.html"} Contact
-    .container.theme-showcase{:role => "main"}
     - if notice || alert
       %p.notice= notice
       %p.alert= alert
