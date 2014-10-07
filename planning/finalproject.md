@@ -121,3 +121,7 @@
 1. deployed to heroku!
 2. still need to implement workflow, mailer/texter, current_tenant
 3. heroku deploy was a biatch, ssh pubkey issues abound due to pointing in the wrong direction, css wasn't deploying-> had to precompile
+####10/7/2014:
+1. implemented workflow for repairs, modified navbars, modified .container class padding-top & padding-bottom
+2. still need to do mailer/texter, current_tenant, payments
+3. Roadblocks: Literal Roadblock or traffic jam on 17, 3.5hrs of driving eating holes in my timeslug, ajax is a motherfucker?, still not most valuable product
