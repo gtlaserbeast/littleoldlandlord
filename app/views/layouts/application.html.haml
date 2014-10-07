@@ -28,7 +28,7 @@
             - if current_user.nil?
               %li
                 =link_to "Rental Properties", rentals_path
-            - unless current_user.try(:admin?)
+            - if current_user && current_user.admin?
               %li
                 = link_to "My Home", rental_path(current_user.rental_id)
             - if current_user.try(:admin?)
