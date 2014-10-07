@@ -25,13 +25,22 @@
       %br
       - @rental.repairs.each do |repair|
         - if current_user.try(:admin?)
-          = link_to "Edit", edit_rental_repair_path(@rental, repair), :class=> "btn btn-info btn-xs"
-          = link_to "Delete", rental_repair_path(@rental, repair), method: :delete, :class=>"btn btn-danger btn-xs"
+          = link_to "Edit", edit_rental_repair_path(@rental, repair), :class=> "btn btn-xs"
+          = link_to "Delete", rental_repair_path(@rental, repair), method: :delete, :class=>"btn btn-xs"
         %em
           = repair.category
         |
         = repair.description
         |
-        %strong
-          = repair.state
-        %br
+        %strong 
+          = repair.workflow_state
+        |
+        - if repair.workflow_state != "fixed"
+          = link_to "Fix!", fix_rental_repair_path(@rental, repair), method: :put, :class=> "btn btn-xs"
+          |
+        - if ['new', 'delayed'].include?(repair.workflow_state)
+          = link_to "Schedule!", schedule_rental_repair_path(@rental, repair), method: :put, :class=> "btn btn-xs"
+          |
+        - if repair.workflow_state == "scheduled"
+          = link_to "Delay!", delay_rental_repair_path(@rental, repair), method: :put, :class=> "btn btn-xs"
+          |

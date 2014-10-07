@@ -1,10 +1,11 @@
 class RepairsController < ApplicationController
-  before_action :find_repair, only: [:show, :edit, :update, :destroy]
-  before_action :find_rental, only: [:index, :new, :create, :edit, :update, :destroy]
-  def index
+  before_action :find_repair, only: [:fix, :schedule, :delay, :show, :edit, :update, :destroy]
+  before_action :find_rental, only: [:fix, :schedule, :delay, :show, :new, :create, :edit, :update, :destroy]
+  def repairs_index
     @repairs = Repair.all
   end
-  def repairs_index
+
+  def index
     @repairs = Repair.all
   end
 
@@ -34,6 +35,19 @@ class RepairsController < ApplicationController
 
   def destroy
     @repair.delete
+    redirect_to rental_path(@rental)
+  end
+
+  def schedule
+    @repair.schedule!
+    redirect_to rental_path(@rental)
+  end
+  def fix
+    @repair.fix!
+    redirect_to rental_path(@rental)
+  end
+  def delay
+    @repair.delay!
     redirect_to rental_path(@rental)
   end
 private

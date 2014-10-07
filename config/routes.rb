@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   match '/repairs', :action => 'repairs_index', :via => [:get], :controller => 'repairs'
   resources :rentals do
-    resources :repairs
+    resources :repairs do
+      member do
+        put :fix
+        put :schedule
+        put :delay
+      end
+    end
   end
 
 
