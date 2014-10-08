@@ -19,29 +19,28 @@
         .google-maps
           %iframe{:frameborder => "0", :height => "450", :src => "https://www.google.com/maps/embed/v1/place?q=#{markers}&key=AIzaSyAQnuVfqaXy-1fiSaAYXDi2Wh39lanrHv4", :style => "border:0", :width => "600"}
   .row
-    .col-lg-8.col-lg-offset-2.centered
+    .col-lg-8.centered
       %em
         Repairs @ this property: 
       %br
       - @rental.repairs.each do |repair|
-        - if current_user.try(:admin?)
-          = link_to "Edit", edit_rental_repair_path(@rental, repair), :class=> "btn btn-xs"
-          = link_to "Delete", rental_repair_path(@rental, repair), method: :delete, :class=>"btn btn-xs"
-        %em
-          = repair.category
-        |
-        = repair.description
-        |
-        %strong 
-          = repair.workflow_state
-        |
-        - if repair.workflow_state != "fixed"
-          = link_to "Fix!", fix_rental_repair_path(@rental, repair), method: :put, :class=> "btn btn-xs"
-          |
-        - if ['new', 'delayed'].include?(repair.workflow_state)
-          = link_to "Schedule!", schedule_rental_repair_path(@rental, repair), method: :put, :class=> "btn btn-xs"
-          |
-        - if repair.workflow_state == "scheduled"
-          = link_to "Delay!", delay_rental_repair_path(@rental, repair), method: :put, :class=> "btn btn-xs"
-          |
-        %br
+        .row
+          .col-lg-3
+            - if current_user.try(:admin?)
+              = link_to "Edit", edit_rental_repair_path(@rental, repair), :class=> "btn btn-xs"
+              = link_to "Delete", rental_repair_path(@rental, repair), method: :delete, :class=>"btn btn-xs"
+          .col-lg-6
+            %em
+              = repair.category
+            |
+            = repair.description
+            |
+            %strong 
+              = repair.workflow_state
+          .col-lg-3
+            - if repair.workflow_state != "fixed"
+              = link_to "Fix!", fix_rental_repair_path(@rental, repair), method: :put, :class=> "btn btn-xs"
+            - if ['new', 'delayed'].include?(repair.workflow_state)
+              = link_to "Schedule!", schedule_rental_repair_path(@rental, repair), method: :put, :class=> "btn btn-xs"
+            - if repair.workflow_state == "scheduled"
+              = link_to "Delay!", delay_rental_repair_path(@rental, repair), method: :put, :class=> "btn btn-xs"

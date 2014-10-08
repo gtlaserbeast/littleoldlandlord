@@ -10,6 +10,7 @@
       .col-md-4
         %strong
           = link_to rental.address.upcase, rental_path(rental), :class => "btn"
+          = " $#{rental.rent_price}"
       .col-md-2
         - if current_user.try(:admin?)
           = link_to "Edit", edit_rental_path(rental), :class=> "btn btn-xs"
