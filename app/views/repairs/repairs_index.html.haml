@@ -6,7 +6,7 @@
       %br
   - @repairs.each do |repair|
     .row
-      .col-lg-9
+      .col-lg-7
         %strong
           = repair.author
           @
@@ -18,14 +18,14 @@
       .col-lg-1
         %strong 
           = repair.workflow_state
-      .col-lg-1
+      .col-lg-2
         - if repair.workflow_state != "fixed"
           = link_to "Fix!", fix_rental_repair_path(repair.rental_id, repair, location: 'index'), method: :put, :class=> "btn btn-xs"
         - if ['new', 'delayed'].include?(repair.workflow_state)
           = link_to "Schedule!", schedule_rental_repair_path(repair.rental_id, repair, location: 'index'), method: :put, :class=> "btn btn-xs"
         - if repair.workflow_state == "scheduled"
           = link_to "Delay!", delay_rental_repair_path(repair.rental_id, repair, location: 'index'), method: :put, :class=> "btn btn-xs"
-      .col-lg-1
+      .col-lg-2
         - if current_user.try(:admin?)
           = link_to "Edit", edit_rental_repair_path(repair.rental_id, repair, location: 'index'), :class=> "btn btn-xs"
           = link_to "Delete", rental_repair_path(repair.rental_id, repair, location: 'index'), method: :delete, :class=>"btn btn-xs"
