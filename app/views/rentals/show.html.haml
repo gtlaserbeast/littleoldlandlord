@@ -3,8 +3,8 @@
   - landlord_email = User.find(@rental.landlord_id).email
   - landlord_name = User.find(@rental.landlord_id).name
   .row
-    .col-lg-8.col-lg-offset-2.centered
-      .col-lg-4.centered
+    .col-lg-12.centered
+      .col-lg-6.centered
         %strong
           =@rental.address.upcase
         %p
@@ -15,11 +15,11 @@
         = link_to "Request a Repair", new_rental_repair_path(@rental.id), :class=>"btn btn-xs"
         %br
         = link_to "Make a Rent Payment", :class=>"btn btn-xs"
-      .col-lg-4.centered
+      .col-lg-6.centered
         .google-maps
           %iframe{:frameborder => "0", :height => "450", :src => "https://www.google.com/maps/embed/v1/place?q=#{markers}&key=AIzaSyAQnuVfqaXy-1fiSaAYXDi2Wh39lanrHv4", :style => "border:0", :width => "600"}
   .row
-    .col-lg-8.centered
+    .col-lg-12.centered
       %em
         Repairs @ this property: 
       %br
