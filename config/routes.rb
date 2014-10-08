@@ -10,8 +10,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  post 'twilio/voice' => 'twilio#voice'
-  post 'notifications/notify' => 'notifications#notify'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

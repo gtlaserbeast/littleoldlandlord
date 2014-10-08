@@ -3,6 +3,7 @@ class Repair < ActiveRecord::Base
   belongs_to :rental
   validates :category, presence: true
   validates :description, presence: true
+  validates :author, presence: true
 
   workflow do 
     state :new do

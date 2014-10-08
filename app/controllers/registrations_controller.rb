@@ -10,6 +10,8 @@ class RegistrationsController < Devise::RegistrationsController
     resource_saved = resource.save
     yield resource if block_given?
     if resource_saved
+      @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
+      @client.account.messages.create(from: '+18435939721', to: '+18432633471', body: "#{@new_user.name} registered for LOL. Admin:#{@new_user.admin.to_s}.")
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_flashing_format?
         sign_up(resource_name, resource)

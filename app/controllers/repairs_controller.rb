@@ -16,6 +16,8 @@ class RepairsController < ApplicationController
   def create
     @repair = Repair.create repair_params
     if @repair.save == true
+      @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
+      @client.account.messages.create(from: '+18435939721', to: "+18432633471", body: "#{current_user.name} issued a Repair Request @ #{@repair.rental.address}. #{@repair.category} #{@repair.description}")
       redirect_to rental_path(@rental)
     else
       render :new
@@ -39,6 +41,8 @@ class RepairsController < ApplicationController
   end
 
   def schedule
+    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
+    @client.account.messages.create(from: '+18435939721', to: "#{@repair.rental.landlord.phone}", body: "#{current_user.name} issued a Repair Request @ #{@repair.rental.address}. #{@repair.category} #{@repair.description}")
     @repair.schedule!
     redirect_to rental_path(@rental)
   end
@@ -56,7 +60,7 @@ private
   end
 
   def repair_params
-    params.require(:repair).permit(:description, :category, :state, :rental_id)
+    params.require(:repair).permit(:description, :category, :state, :rental_id, :author)
   end
   def find_repair
     @repair = Repair.find params[:id]
