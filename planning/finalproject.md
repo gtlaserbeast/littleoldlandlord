@@ -127,5 +127,5 @@
 3. Roadblocks: Literal Roadblock or traffic jam on 17, 3.5hrs of driving eating holes in my timeslug, ajax is a motherfucker?, still not most valuable product
 ####10/8/2014
 1. fixed redirect for workflow, implemented twilio text notification for new repairs, move-ins, and repair workflow. tweaked views
-2. stress about it
+2. stress about it, UPDATE README
 3. computers are tough, dawg
