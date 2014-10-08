@@ -30,6 +30,8 @@
               = link_to "Edit", edit_rental_repair_path(@rental, repair), :class=> "btn btn-xs"
               = link_to "Delete", rental_repair_path(@rental, repair), method: :delete, :class=>"btn btn-xs"
           .col-lg-6
+            %strong
+              = repair.author
             %em
               = repair.category
             |
