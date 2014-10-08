@@ -42,17 +42,36 @@ class RepairsController < ApplicationController
 
   def schedule
     @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
-    @client.account.messages.create(from: '+18435939721', to: "#{@repair.rental.landlord.phone}", body: "#{current_user.name} issued a Repair Request @ #{@repair.rental.address}. #{@repair.category} #{@repair.description}")
+    @landlord = User.find(@repair.rental.landlord_id)
+    @client.account.messages.create(from: '+18435939721', to: "#{@landlord.phone}", body: "#{current_user.name} scheduled a repair @ #{@repair.rental.address}. #{@repair.category} #{@repair.description}")
     @repair.schedule!
-    redirect_to rental_path(@rental)
+    if params[:location] == "index"
+      redirect_to repairs_path
+    else
+      redirect_to rental_path(@rental)
+    end
   end
   def fix
+    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
+    @landlord = User.find(@repair.rental.landlord_id)
+    @client.account.messages.create(from: '+18435939721', to: "#{@landlord.phone}", body: "#{current_user.name} Resolved an issue @ #{@repair.rental.address}. #{@repair.category} #{@repair.description}")
     @repair.fix!
-    redirect_to rental_path(@rental)
+    if params[:location] == "index"
+      redirect_to repairs_path
+    else
+      redirect_to rental_path(@rental)
+    end
   end
   def delay
+    @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
+    @landlord = User.find(@repair.rental.landlord_id)
+    @client.account.messages.create(from: '+18435939721', to: "#{@landlord.phone}", body: "#{current_user.name} Delayed repairing an issue @ #{@repair.rental.address}. #{@repair.category} #{@repair.description}")
     @repair.delay!
-    redirect_to rental_path(@rental)
+    if params[:location] == "index"
+      redirect_to repairs_path
+    else
+      redirect_to rental_path(@rental)
+    end
   end
 private
   def find_rental
