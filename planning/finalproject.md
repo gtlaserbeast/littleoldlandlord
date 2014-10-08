@@ -125,3 +125,7 @@
 1. implemented workflow for repairs, modified navbars, modified .container class padding-top & padding-bottom
 2. still need to do mailer/texter, current_tenant, payments
 3. Roadblocks: Literal Roadblock or traffic jam on 17, 3.5hrs of driving eating holes in my timeslug, ajax is a motherfucker?, still not most valuable product
+####10/8/2014
+1. fixed redirect for workflow, implemented twilio text notification for new repairs, move-ins, and repair workflow. tweaked views
+2. stress about it
+3. computers are tough, dawg
