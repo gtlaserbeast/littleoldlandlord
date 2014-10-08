@@ -7,16 +7,13 @@
     %br
     - markers = "#{rental.latitude}%2C#{rental.longitude}&"
     .row
-      .col-md-4.centered
+      .col-md-4
         %strong
           = link_to rental.address.upcase, rental_path(rental), :class => "btn"
-      .col-md-2.centered
+      .col-md-2
         - if current_user.try(:admin?)
           = link_to "Edit", edit_rental_path(rental), :class=> "btn btn-xs"
           = link_to "Delete", rental_path(rental), method: :delete, :class=>"btn btn-xs"
       .col-md-6.centered
         .google-maps
           %iframe{:frameborder => "0", :height => "450", :src => "https://www.google.com/maps/embed/v1/place?q=#{markers}&key=AIzaSyAQnuVfqaXy-1fiSaAYXDi2Wh39lanrHv4", :style => "border:0", :width => "600"}
-  .row
-    .col-md-8.col-md-8-offset-2.centered
-      = link_to "Back", root_path, :class => "btn btn-xs"
