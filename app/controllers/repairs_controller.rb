@@ -37,7 +37,11 @@ class RepairsController < ApplicationController
 
   def destroy
     @repair.delete
-    redirect_to rental_path(@rental)
+    if params[:location] == "index"
+      redirect_to repairs_path
+    else
+      redirect_to rental_path(@rental)
+    end
   end
 
   def schedule

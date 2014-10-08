@@ -25,6 +25,6 @@
           = link_to "Delay!", delay_rental_repair_path(repair.rental_id, repair, location: 'index'), method: :put, :class=> "btn btn-xs"
       .col-lg-2
         - if current_user.try(:admin?)
-          = link_to "Edit", edit_rental_repair_path(repair.rental_id, repair), :class=> "btn btn-xs"
-          = link_to "Delete", rental_repair_path(repair.rental_id, repair), method: :delete, :class=>"btn btn-xs"
+          = link_to "Edit", edit_rental_repair_path(repair.rental_id, repair, location: 'index'), :class=> "btn btn-xs"
+          = link_to "Delete", rental_repair_path(repair.rental_id, repair, location: 'index'), method: :delete, :class=>"btn btn-xs"
         %br
