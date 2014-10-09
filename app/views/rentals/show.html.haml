@@ -2,6 +2,7 @@
   - markers = "#{@rental.latitude}%2C#{@rental.longitude}&"
   - landlord_email = User.find(@rental.landlord_id).email
   - landlord_name = User.find(@rental.landlord_id).name
+  - tenants = User.where(rental_id: @rental.id)
   .row
     .col-lg-12.centered
       .col-lg-6.centered
@@ -15,6 +16,12 @@
         = link_to "Request a Repair", new_rental_repair_path(@rental.id), :class=>"btn btn-xs"
         %br
         = link_to "Make a Rent Payment", :class=>"btn btn-xs"
+        %br
+        Tenants:
+        %br
+        - tenants.each do |tenant|
+          = tenant.name
+          %br
       .col-lg-6.centered
         .google-maps
           %iframe{:frameborder => "0", :height => "450", :src => "https://www.google.com/maps/embed/v1/place?q=#{markers}&key=AIzaSyAQnuVfqaXy-1fiSaAYXDi2Wh39lanrHv4", :style => "border:0", :width => "600"}
